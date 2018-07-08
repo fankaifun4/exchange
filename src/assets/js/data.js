@@ -1,0 +1,5 @@
+const commonProblems = [
+  
+]
+
+export { commonProblems };
