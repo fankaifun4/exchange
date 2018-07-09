@@ -1,2 +1,3 @@
 
 export const UPDATEISLOGIN = 'UPDATEISLOGIN'
+export const LOOKOUTDATA = 'LOOKOUTDATA'

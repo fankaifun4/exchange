@@ -30,6 +30,16 @@ const router = new Router({
       name: 'Property',
       component: r => require.ensure([], () => r(require('../components/pages/personal/property.vue')), 'Property'),
     },
+    {
+      path: '/userInfo',
+      name: 'UserInfo',
+      component: r => require.ensure([], () => r(require('../components/pages/personal/UserInfo.vue')), 'Property'),
+    },
+    {
+      path: '/wtGuanli',
+      name: 'WtGuanli',
+      component: r => require.ensure([], () => r(require('../components/pages/personal/WtGuanli.vue')), 'Property'),
+    },
     { path: '/', redirect: { path: '/index' }}
   ]
 })

@@ -4,4 +4,7 @@ export default {
   [types.UPDATEISLOGIN](state,arg){
     state.isLogin = arg;
   },
+  [types.LOOKOUTDATA](state,arg){
+    state.lookData=arg
+  }
 }

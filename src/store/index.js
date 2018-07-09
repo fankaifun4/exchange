@@ -9,6 +9,7 @@ Vue.use(Vuex)
 
 const state = {
   isLogin: false,
+  lookData:true
 }
 
 export default new Vuex.Store({

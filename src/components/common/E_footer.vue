@@ -14,11 +14,10 @@ footer .home-footer {
     box-sizing: border-box;
     padding: 40px 0 0;
     color: #a5adb8;
-    max-width: 1200px;
+    max-width: 1360px;
     margin: 0 auto;
 }
 footer .footer-min-width {
-    width: 1200px;
     margin: 0 auto;
 }
 
@@ -28,11 +27,6 @@ footer .footer-logo {
 }
 img {
     border-style: none;
-}
-
-
-.min-w {
-    min-width: 1240px;
 }
 .mg-r32 {
     margin-right: 32px!important;
@@ -89,7 +83,7 @@ footer .home-footer {
     box-sizing: border-box;
     padding: 40px 0 0;
     color: #a5adb8;
-    max-width: 1200px;
+    max-width: 1360px;
     margin: 0 auto;
 }
 .ts-14 {

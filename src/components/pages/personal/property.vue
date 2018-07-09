@@ -1,26 +1,10 @@
 <style scoped lang='scss'>
-	@import '../../../assets/css/comm.scss';
-	.container{
-		color:#fff;
-		padding:20px 0;
-		background: #181f2e;
-	}
-	.child-nav-main{
-		width: 100%;
-		line-height: 1.5;
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		box-shadow: inset 0 -1px 0 0 hsla(0,0%,100%,.1);
-		
-	}
+
 	.child-nav_title{
 		font-size: 20px;
     	text-align: left;
 	}
-	.color-primary{
-		color: #fff;
-	}
+
 	.child-nav_nav{
 		line-height: 1.5;
 		display: flex;
@@ -55,12 +39,12 @@
 	    display: flex;
 	    align-items: center;
 	}
-	
+
 	.box-checkbox-main {
 	    white-space: nowrap;
 	    cursor: pointer;
 	}
-	
+
 	.box-input-box {
     position: relative;
 }
@@ -71,7 +55,7 @@
     -webkit-transform: translateY(-50%);
     transform: translateY(-50%);
 }
- 
+
 .box-input_close, .box-input_suffix {
     position: absolute;
     top: 50%;
@@ -88,14 +72,13 @@
     width: 100%;
     border-radius: 3px;
     background-color: #363c47;
-    padding-left: 8px;
     color: #fff;
-    padding-left:25px;
-    padding-right:30px;
+    padding-left:35px;
+    padding-right:35px;
 }
 
 .input__input_style.input_small{
-    height: 28px;
+    height: 35px;
 }
 
 .box-checkbox__input {
@@ -112,13 +95,13 @@
 .box-ratio-group {
 	display: flex;
 	align-items: center;
-	
+
 	.box-ratio-main{
 	    display: flex;
 	    align-items: center;
 	    cursor: pointer;
 	}
-	
+
 	.box-ratio-main:not(:last-of-type) {
 	    margin-right: 12px;
 	}
@@ -145,118 +128,118 @@
 				 &:first-child{
 				 	width:98px;
 				 	padding-left:28px;
-				 }	
+				 }
 				 &:nth-child(2){
 				 	width:154px;
-				 }	
+				 }
 				 &:nth-child(3){
 				 	width:154px;
-				 }	
+				 }
 				 &:nth-child(4){
 				 	width:158px;
-				 }	
+				 }
 				 &:nth-child(5){
 				 	width:158px;
-				 }	
+				 }
 				 &:nth-child(6){
 				 	width:358px;
-				 }	
+				 }
 				 &:nth-child(7){
 				 	width:38px;
-				 }	
+				 }
 
 			}
 		}
     }
     .table-header.czjl{
 		tr{
-			
+
 			th{
 				padding: 10px 0 10px 8px;
 				 &:first-child{
 				 	width:98px;
 				 	padding-left:28px;
-				 }	
+				 }
 				 &:nth-child(2){
 				 	width:154px;
-				 }	
+				 }
 				 &:nth-child(3){
 				 	width:154px;
-				 }	
+				 }
 				 &:nth-child(4){
 				 	width:158px;
-				 }	
+				 }
 				 &:nth-child(5){
 				 	width:158px;
-				 }	
+				 }
 				 &:nth-child(6){
 				 	width:208px;
-				 }	
+				 }
 				 &:nth-child(7){
 				 	width:238px;
-				 }	
+				 }
 
 			}
 		}
     }
     .table-header.txjl{
 		tr{
-			
+
 			th{
 				padding: 10px 0 10px 8px;
 				 &:first-child{
 				 	width:98px;
 				 	padding-left:28px;
-				 }	
+				 }
 				 &:nth-child(2){
 				 	width:154px;
-				 }	
+				 }
 				 &:nth-child(3){
 				 	width:348px;
-				 }	
+				 }
 				 &:nth-child(4){
 				 	width:158px;
-				 }	
+				 }
 				 &:nth-child(5){
 				 	width:158px;
-				 }	
+				 }
 				 &:nth-child(6){
 				 	width:158px;
-				 }	
+				 }
 				 &:nth-child(7){
 				 	width:112px;
-				 }	
+				 }
 
 			}
 		}
     }
     .table-header.wdzd{
 		tr{
-			
+
 			th{
 				padding: 10px 0 10px 8px;
 				 &:first-child{
 				 	width:96px;
 				 	padding-left:28px;
-				 }	
+				 }
 				 &:nth-child(2){
 				 	width:156px;
-				 }	
+				 }
 				 &:nth-child(3){
 				 	width:176px;
-				 }	
+				 }
 				 &:nth-child(4){
 				 	width:176px;
-				 }	
+				 }
 				 &:nth-child(5){
 				 	width:176px;
-				 }	
+				 }
 				 &:nth-child(6){
 				 	width:176px;
-				 }	
+				 }
 				 &:nth-child(7){
 				 	width:244px;
-				 }	
+				 }
 
 			}
 		}
@@ -295,17 +278,15 @@
 	    opacity: .2;
 	    cursor: not-allowed;
 	}
-
-
 }
 .select-bz{
-	height:22px;
+	height:35px;
 	padding:0 12px;
 	min-width:130px;
 	border-radius: 3px;
 }
 .date_fw{
-	height:22px;
+	height:35px;
 	padding:0 12px;
 	border-radius: 3px;
 }
@@ -319,19 +300,19 @@
 						<div class="child-nav_title color-primary"><span>资产管理</span></div>
 						<div class="child-nav_nav">
 							<span  class="child-nav_item" @click="selectTable(0)" :class="{' router-link-exact-active':tableChecked===0}" >
-								<span>资产明细</span> 
+								<span>资产明细</span>
 								<span  class="after ts-12"></span>
-							</span>	
+							</span>
 							<span  class="child-nav_item"  @click="selectTable(1)" :class="{' router-link-exact-active':tableChecked===1}">
-								<span >充值记录</span> 
+								<span >充值记录</span>
 								<span  class="after ts-12"></span>
 							</span>
 							<span  class="child-nav_item"  @click="selectTable(2)" :class="{' router-link-exact-active':tableChecked===2}">
-								<span>提现记录</span> 
+								<span>提现记录</span>
 								<span  class="after ts-12"></span>
 							</span>
 							<span  class="child-nav_item"  @click="selectTable(3)" :class="{' router-link-exact-active':tableChecked===3}">
-								<span>我的账单</span> 
+								<span>我的账单</span>
 								<span  class="after ts-12"></span>
 							</span>
 						</div>
@@ -344,19 +325,19 @@
 										<div  class="box-input-box">
 											<span  class="box-input_prefix pd-l8">
 												<div  class="iconfont icon-tubiao-copy color-grey"></div>
-											</span> 
-											<span  class="box-input_suffix pd-r8" style="z-index: 1;"></span> <!----> 
+											</span>
+											<span  class="box-input_suffix pd-r8" style="z-index: 1;"></span> <!---->
 											<input  type="text" class="input__input_style  input_small ">
-										</div> 
-									</div> 
+										</div>
+									</div>
 									<label for="" class="box-checkbox-main ts-14 color-grey mg-l16">
 										<span class="checked-box iconfont icon-yduidanxuankuangxuanzhong"></span>
 										<span class="ft-14 color-grey">隐藏小额资产</span>
 									</label>
-								</div> 
+								</div>
 								<div class="ts-14 color--grey text-right">
 									<div>
-										 <span> 账户总资产(估值)</span> 
+										 <span> 账户总资产(估值)</span>
 										 <span class="color-primary"> ≈ 0.00000000 BTC / 0.00CNY</span>
 									</div>
 									<div class="ts-12">
@@ -444,7 +425,7 @@
 										<div v-else class="no-data">暂无数据</div>
 									</div>
 								</div>
-								
+
 							</div>
 						</div>
 						<div class="table-2"  v-if="tableChecked===1">
@@ -454,13 +435,13 @@
 										<div  class="box-input-box">
 											<span  class="box-input_prefix pd-l8">
 												<div  class="iconfont icon-tubiao-copy color-grey"></div>
-											</span> 
-											<span  class="box-input_suffix pd-r8" style="z-index: 1;"></span> <!----> 
+											</span>
+											<span  class="box-input_suffix pd-r8" style="z-index: 1;"></span> <!---->
 											<input  type="text" class="input__input_style  input_small ">
-										</div> 
-										
-									</div> 
-								</div> 
+										</div>
+
+									</div>
+								</div>
 								<div class="box-ratio-group">
 									<label class="box-ratio-main">
 										<span class="checked-box iconfont icon-yduidanxuankuangxuanzhong"></span>
@@ -558,13 +539,13 @@
 										<div  class="box-input-box">
 											<span  class="box-input_prefix pd-l8">
 												<div  class="iconfont icon-tubiao-copy color-grey"></div>
-											</span> 
-											<span  class="box-input_suffix pd-r8" style="z-index: 1;"></span> <!----> 
+											</span>
+											<span  class="box-input_suffix pd-r8" style="z-index: 1;"></span> <!---->
 											<input  type="text" class="input__input_style  input_small ">
-										</div> 
-										
-									</div> 
-								</div> 
+										</div>
+
+									</div>
+								</div>
 								<div class="box-ratio-group">
 									<label class="box-ratio-main">
 										<span class="checked-box iconfont icon-yduidanxuankuangxuanzhong"></span>
@@ -668,7 +649,7 @@
 											<option value="BTC">FI</option>
 											<option value="BTC">SEO</option>
 										</select>
-									</div> 
+									</div>
 									<div  class="ts-14 mg-r24">
 										<span class="mg-r8 color--grey">类型</span>
 										<select name="" id="" class="select-bz">
@@ -679,12 +660,12 @@
 											<option value="BTC">FI</option>
 											<option value="BTC">SEO</option>
 										</select>
-									</div> 
+									</div>
 									<div class="ts-14">
 										<span class="mg-r8 color--grey">时间范围</span>
 										<input type="text" class="date_fw" id="date_fw" readonly="readonly">
 									</div>
-								</div> 
+								</div>
 								<div class="box-ratio-group">
 									导出数据
 								</div>
@@ -763,8 +744,8 @@
 	</div>
 </template>
 <script>
-const layui =require('../../../assets/js/libs/laydate/laydate.js')  
-
+const layui =require('../../../assets/js/libs/laydate/laydate.js')
+import { mapState, mapGetters,mapActions,mapMutations } from "vuex";
 	//账户资产
 	export default{
 		data(){
@@ -772,6 +753,9 @@ const layui =require('../../../assets/js/libs/laydate/laydate.js')
 				tableChecked:0
 			}
 		},
+    computed:{
+      ...mapState(['isLogin','lookData'])
+    },
 		methods:{
 			inputClick(val){
 				console.log(val)
@@ -784,15 +768,12 @@ const layui =require('../../../assets/js/libs/laydate/laydate.js')
 				let today = tdate.setFullYear(tdate.getFullYear(), tdate.getMonth(),tdate.getDate() )
 				let ydate=new Date()
 				let yesday = ydate.setFullYear(ydate.getFullYear(), ydate.getMonth(),ydate.getDate()-1 )
-				
+
 				function isTen (val){
 					return val<10?'0'+val:val
 				}
-
 				let daystart=ydate.getFullYear()+'/'+isTen(ydate.getMonth()+1)+'/'+isTen(ydate.getDate())
 				let dayend=tdate.getFullYear()+'/'+isTen(tdate.getMonth()+1)+'/'+isTen(tdate.getDate())
-
-
 				laydate.render({
 				  elem: '#date_fw',
 				  range: true,
@@ -807,10 +788,20 @@ const layui =require('../../../assets/js/libs/laydate/laydate.js')
 			},
 			selectTable(val){
 				this.tableChecked=val
-			}	
+        if(val==3){
+				  this.$nextTick(()=>{
+            this.dateInit()
+          })
+        }
+			}
 		},
 		mounted(){
-			this.dateInit()	
-		}
+      console.log(this.lookData)
+		},
+    watch:{
+		  login(){
+
+      }
+    }
 	}
 </script>

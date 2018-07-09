@@ -36,7 +36,7 @@
     .user-list{
       width:400px;
       height:300px;
-      background: #fff;  
+      background: #fff;
     }
   }
   .e-head .right .ways{
@@ -206,6 +206,52 @@
   }
 
 }
+.posinal-parent{
+  position:relative;
+}
+.posinal-list{
+  position: absolute;
+  top:50px;
+  z-index: 100;
+  left:-300px;
+  width:300px;
+  background:#363c47;
+  color:#fff;
+  boreder-radius:18px;
+  padding:30px;
+  >ul>li{
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    >div{
+      line-height: 1.2;
+    }
+    .color-grey{
+      color:#999;
+      font-size:14px;
+      text-align: right;
+    }
+  }
+}
+  .person-list-man{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .isSec{
+      font-size:30px;
+      padding:10px;
+      height:25px;
+      border:1px solid #999;
+      color:#999;
+      line-height: 32px;
+      border-radius: 8px;
+      &.active{
+        color:#27b7c2;
+        border:1px solid #27b7c2;
+      }
+    }
+  }
 
 </style>
 <template>
@@ -221,12 +267,28 @@
       <div class="ways" v-if="!isLogin" :class="item.isActive" v-for="(item,index) in ways" :key="item.index" @click="toWay(index)">
         {{item.name}}
       </div>
-      <div class="user" v-if="isLogin" @mouseover="isUserInfo=true" @mouseout="isUserInfo=false" @touchstart="isUserInfo=true">
+      <div class="user" v-if="isLogin" @mouseover="isUserInfo=true"  @mouseout="isUserInfo=false"   @touchstart="isUserInfo=true">
         <img src="../../../static/img/user.png" alt="">
-        <span @click="goPathPersonal">个人中心</span>
-        <!-- <ul v-if="isUserInfo">
-          <li v-for="(item,index) in userInfo" :key="item.index" @click="toUserInfo(index)"></li>
-        </ul> -->
+        <span  class="posinal-parent">
+          <span>个人中心</span>
+          <div class="posinal-list"  @mouseover="isUserInfo=true"  @mouseout="isUserInfo=false"     v-if="isUserInfo">
+            <div class="person-list-man">
+              <div>fanka**com</div>
+              <div class="isSec iconfont icon-yj" :class="{'active':isLookData}" @click="lookOutDataDis"></div>
+            </div>
+            <ul>
+              <li v-for="item in userInfo"  @click="goPath(item.type)">
+                <span>{{item.name}} </span>
+                <div v-if="item.BTC">
+                  <div v-if="lookData">BTC {{item.BTC}}</div>
+                  <div v-else>BTC ***</div>
+                  <div  v-if="lookData" class="color-grey">{{item.CNY}} CNY</div>
+                  <div  v-else class="color-grey">*** CNY</div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </span>
         <span @click="loginOut()">退出</span>
       </div>
       <div class="base-line"></div>
@@ -245,14 +307,14 @@
 <script>
   import axios from 'axios';
   import qs from 'qs';
-  import { mapState, mapGetters } from "vuex";
-
+  import { mapState, mapGetters,mapActions,mapMutations } from "vuex";
   export default {
     name: "e_head",
     data () {
       return {
         isUserInfo: false,
         isInfo: false,
+        isLookData:true,
         titles: [
           {isActive:"",name:"币币交易"},
           {isActive:"",name:"挖矿"},
@@ -263,7 +325,9 @@
           {isActive:"active",name:"注册"}
         ],
         userInfo: [
-
+          {type:"Property",name:"账户资产",BTC:'0.000000000',CNY:'0.00'},
+          {type:"UserInfo",name:"账户信息"},
+          {type:"WtGuanli",name:"委托管理"}
         ],
         infos: [
           {isActive:"",name:"公告"},
@@ -273,18 +337,16 @@
       };
     },
     computed: {
-      ...mapState(["isLogin"]),
-      ...mapGetters({
-    
-      })
+      ...mapState(["isLogin","lookData"]),
     },
     created(){
-      
+
     },
     mounted () {
-   
+
     },
     methods: {
+      ...mapActions(['lookOutData']),
       toIndex(){
         this.$router.push("index");
       },
@@ -309,12 +371,15 @@
           this.$router.push("introduce");
         }
       },
-      goPathPersonal(){
-        this.$router.push({name:'Property',query:{ id:'123123123' }})
+      lookOutDataDis(){
+        this.isLookData=!this.isLookData
+        this.lookOutData(this.isLookData)
+      },
+      goPath(routeName){
+        this.$router.push({ name: routeName})
       }
     },
     watch: {
-     
     },
   };
 </script>

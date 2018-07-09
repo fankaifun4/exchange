@@ -40,7 +40,7 @@ export default {
     }
   },
   methods:{
-   
+
   },
   watch: {
     $route(to, from) {
@@ -58,6 +58,7 @@ export default {
 </script>
 
 <style lang="scss">
+@import './assets/css/comm.scss';
 html,body{
   width: 100%;
   height: 100%;
@@ -83,7 +84,7 @@ li {
 
 a {
   text-decoration: none;
-  
+
   word-wrap:break-word;
   word-break:break-all;
 }
@@ -110,7 +111,7 @@ button, input, select, textarea {
   outline: 0;
 }
 .wrapper{
-  position:relative; 
+  position:relative;
 }
 .router-pop-out-enter-active,
 .router-pop-out-leave-active,
