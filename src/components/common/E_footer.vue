@@ -1,5 +1,6 @@
 <style scoped lang='scss'>
 footer {
+    height:200px;
     line-height: 1.5;
     background-color: #242933;
 }

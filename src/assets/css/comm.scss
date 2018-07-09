@@ -11,7 +11,6 @@ input, textarea, select, button {
     margin: 0em;
 }
 .main{
-    min-height: calc(100vh - 187px);
     background: #181f2e;
 }
 .container{
@@ -38,19 +37,21 @@ input, textarea, select, button {
 }
 .child-main{
 	box-sizing: border-box;
-    min-height: calc(100vh - 60px - 127px);
-    background-color: #181f2e;
-    padding-bottom: 40px;
-    line-height: 1.5;
+  background-color: #181f2e;
+  padding-bottom: 40px;
+  line-height: 1.5;
 }
 
 .ts-12{
 	font-size: 12px;
 }
+
 .ts-14 {
 	     font-size: 14px;
 }
-
+.pd-b4 {
+    padding-bottom: 4px!important;
+}
 .pd-t24{
 	padding-top: 24px!important;
 }
@@ -67,24 +68,41 @@ input, textarea, select, button {
     padding-top: 8px!important;
     padding-bottom: 8px!important;
 }
+.pd-b24 {
+    padding-bottom: 24px!important;
+}
+.mg-t16 {
+    margin-top: 16px!important;
+}
+
 .mg-l16 {
     margin-left: 16px!important;
 }
-
 .mg-l8 {
     margin-left: 8px!important;
+}
+
+.mg-l4 {
+    margin-left: 4px!important;
+}
+.mg-l24 {
+    margin-left: 24px!important;
+}
+.mg-b24 {
+    margin-bottom: 24px!important;
+}
+.mg-r4 {
+    margin-right: 4px!important;
+}
+.mg-r8 {
+    margin-right: 8px!important;
 }
 .mg-r24 {
     margin-right: 24px!important;
 }
-.mg-r8{
-	margin-right: 8px;
-}
-.mg-l4 {
-    margin-left: 4px!important;
-}
-.mg-r4 {
-    margin-right: 4px!important;
+
+.marginNo {
+    margin: 0;
 }
 .text-right {
     text-align: right;
@@ -120,13 +138,12 @@ input, textarea, select, button {
     font-weight: 300;
     text-align: center;
 }
-.mg-r8 {
-    margin-right: 8px!important;
-}
-.mg-r24 {
-    margin-right: 24px!important;
-}
+
 .el-select {
     display: inline-block;
     position: relative;
+}
+
+.ts-16 {
+    font-size: 16px;
 }

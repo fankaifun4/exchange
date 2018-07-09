@@ -3,9 +3,8 @@
     <v-head v-if="isHead"></v-head>
     <div  class="wrapper">
       <transition :name="transitionName">
-      <router-view >
-      </router-view>
-    </transition>
+        <router-view ></router-view>
+      </transition>
     </div>
     <E_footer/>
   </div>
@@ -63,6 +62,8 @@ html,body{
   width: 100%;
   height: 100%;
   user-select: none;
+  background: #181f2e;
+  overflow-x:hidden;
 }
 #app {
   width: 100%;
@@ -72,7 +73,11 @@ html,body{
   -moz-osx-font-smoothing: grayscale;
   font-size: 14px;
 }
-
+.wrapper{
+  position:relative;
+  min-height:calc( 100% - 200px );
+  overflow:hidden;
+}
 * {
   margin: 0;
   padding: 0;
@@ -110,9 +115,7 @@ button, input, select, textarea {
   /*去掉获取焦点后的外边框*/
   outline: 0;
 }
-.wrapper{
-  position:relative;
-}
+
 .router-pop-out-enter-active,
 .router-pop-out-leave-active,
 .router-pop-in-enter-active,
