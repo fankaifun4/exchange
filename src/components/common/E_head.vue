@@ -2,7 +2,6 @@
 <style scoped lang='scss'>
 @media screen and (min-width: 900px) {
   .e-head{
-    width: 1920px;
     height: 60px;
     background: #242933;
   }
@@ -21,7 +20,7 @@
   }
   .e-head .content .title{
     color: #fff;
-    font-size: 18px;
+    font-size: 14px;
     line-height: 60px;
     float: left;
     margin-left: 25px;
@@ -108,7 +107,6 @@
 
 @media screen and (max-width: 900px) {
   .e-head{
-    width: 750px;
     height: 40px;
     background: #242933;
   }
@@ -127,7 +125,7 @@
   }
   .e-head .content .title{
     color: #fff;
-    font-size: 18px;
+    font-size: 14px;
     line-height: 40px;
     float: left;
     margin-left: 15px;
@@ -208,22 +206,28 @@
 }
 .posinal-parent{
   position:relative;
+  boreder-radius:18px;
 }
 .posinal-list{
   position: absolute;
-  top:50px;
+  top:45px;
   z-index: 100;
-  left:-300px;
+  left:-290px;
   width:300px;
   background:#363c47;
   color:#fff;
-  boreder-radius:18px;
-  padding:30px;
+  overflow: hidden;
+  border-radius: 4px;
+  padding:10px 0;
   >ul>li{
+    padding:0 30px;
     overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    &:hover{
+      background:#272d38;
+    }
     >div{
       line-height: 1.2;
     }
@@ -238,14 +242,14 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding:0 30px;
     .isSec{
-      font-size:30px;
-      padding:10px;
-      height:25px;
+      font-size:20px;
+      line-height: 1;
+      padding:5px 10px;
       border:1px solid #999;
       color:#999;
-      line-height: 32px;
-      border-radius: 8px;
+      border-radius: 4px;
       &.active{
         color:#27b7c2;
         border:1px solid #27b7c2;

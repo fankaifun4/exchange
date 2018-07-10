@@ -25,20 +25,64 @@ const router = new Router({
       name: 'introduce',
       component: r => require.ensure([], () => r(require('../components/pages/Introduce.vue')), 'Introduce'),
     },
+    //账户资产
     {
       path: '/property',
       name: 'Property',
-      component: r => require.ensure([], () => r(require('../components/pages/personal/property.vue')), 'Property'),
+      component: r => require.ensure([], () => r(require('../components/pages/personal/Property.vue')), 'Property'),
     },
+    //账户信息
     {
       path: '/userInfo',
       name: 'UserInfo',
       component: r => require.ensure([], () => r(require('../components/pages/personal/UserInfo.vue')), 'Property'),
+      children:[
+        {
+          path: '',
+          redirect: 'userCenter'
+        },
+        {
+          path: 'userCenter',
+          name: 'UserCenter',
+          component: r => require.ensure([], () => r(require('../components/pages/personal/components/UserMsg.vue')), 'Property'),
+        },
+        {
+          path: 'idAuth',
+          name: 'IdAuth',
+          component: r => require.ensure([], () => r(require('../components/pages/personal/components/IdAuth.vue')), 'Property'),
+        }
+      ]
     },
+    //委托管理
     {
       path: '/wtGuanli',
       name: 'WtGuanli',
       component: r => require.ensure([], () => r(require('../components/pages/personal/WtGuanli.vue')), 'Property'),
+    },
+    //密码重置
+    {
+      path: '/loginPwd',
+      name: 'LoginPwd',
+      component: r => require.ensure([], () => r(require('../components/pages/personal/userinfo/Returnpswd.vue')), 'Property'),
+    },
+
+    //绑定短信验证
+    {
+      path: '/bindSMS',
+      name: 'BindSMS',
+      component: r => require.ensure([], () => r(require('../components/pages/personal/userinfo/BindSMS.vue')), 'Property'),
+    },
+    //绑定谷歌
+    {
+      path: '/bindGoogle',
+      name: 'BindGoogle',
+      component: r => require.ensure([], () => r(require('../components/pages/personal/userinfo/BindGoogle.vue')), 'Property'),
+    },
+    //设置资金密码
+    {
+      path: '/balancePwd',
+      name: 'BalancePwd',
+      component: r => require.ensure([], () => r(require('../components/pages/personal/userinfo/BalancePwd.vue')), 'Property'),
     },
     { path: '/', redirect: { path: '/index' }}
   ]

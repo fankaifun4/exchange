@@ -5,7 +5,7 @@
       <p class="tell">交易手续费 100% 返利，持有CP再享平台 100% 收益</p>
       <div class="content">
         <div class="left">
-          <p>公测中，即将开启创世挖矿</p> 
+          <p>公测中，即将开启创世挖矿</p>
           <p>【公告】关于CoinPark开启公测的公告</p>
         </div>
         <div class="right">
@@ -35,7 +35,7 @@
           </div>
           <p class="bottom">
             {{item.num}}
-            <span>BTC</span>  
+            <span>BTC</span>
           </p>
         </li>
       </ul>
@@ -104,7 +104,7 @@
       this.$parent.isHead = true;
     },
     mounted () {
-   
+
     },
     methods: {
       toNews(idx){
@@ -114,7 +114,7 @@
       },
     },
     watch: {
-      
+
     },
   };
 </script>
@@ -123,9 +123,8 @@
 <style scoped lang='scss'>
 @media screen and (min-width: 900px) {
   .index .banner{
-    width: 1920px;
     height: 486px;
-    background: url(static/img/index-bg.png) no-repeat;
+    background: url(../../../static/img/index-bg.png) no-repeat;
     background-size: 100% 100%;
   }
   .index .banner .title{
@@ -141,7 +140,6 @@
     text-align: center;
   }
   .index .banner .content{
-    width: 1920px;
     margin-top: 40px;
     display: flex;
     justify-content: center;
@@ -196,7 +194,6 @@
     background-color: rgba(0,152,163,.06);
   }
   .index .ranking{
-    width: 1920px;
     background-color: #22283C;
     padding-bottom: 58px;
   }
@@ -226,13 +223,13 @@
   }
   .index .ranking .content li:nth-child(1){
     background-image: linear-gradient(71deg,#d96a45,#f7a74a);
-  } 
+  }
   .index .ranking .content li:nth-child(2){
     background-image: linear-gradient(71deg,#cc8c3d,#e6c267);
-  } 
+  }
   .index .ranking .content li:nth-child(3){
     background-image: linear-gradient(71deg,#946d41,#ccab7a);
-  } 
+  }
   .index .ranking .content .tuchu .top div:nth-child(1){
     color: #ffdf6b;
     height: 50px;
@@ -240,7 +237,7 @@
     margin-top: -20px;
   }
   .index .ranking .content .tuchu .top div:nth-child(1) span{
-    font-size: 48px;
+    font-size: 38px;
   }
   .index .ranking .content li .top div:nth-child(2){
     color: rgba(230,232,242,.6);
@@ -265,7 +262,6 @@
     margin-top: 15px;
   }
   .index .trade{
-    width: 1920px;
     padding: 40px 0;
     background-color: #22283C;
   }
@@ -322,9 +318,8 @@
 
 @media screen and (max-width: 900px) {
   .index .banner{
-    width: 750px;
     height: 300px;
-    background: url(static/img/index-bg.png) no-repeat;
+    background: url(../../../static/img/index-bg.png) no-repeat;
     background-size: 100% 100%;
   }
   .index .banner .title{
@@ -426,13 +421,13 @@
   }
   .index .ranking .content li:nth-child(1){
     background-image: linear-gradient(71deg,#d96a45,#f7a74a);
-  } 
+  }
   .index .ranking .content li:nth-child(2){
     background-image: linear-gradient(71deg,#cc8c3d,#e6c267);
-  } 
+  }
   .index .ranking .content li:nth-child(3){
     background-image: linear-gradient(71deg,#946d41,#ccab7a);
-  } 
+  }
   .index .ranking .content .tuchu .top div:nth-child(1){
     color: #ffdf6b;
     height: 50px;

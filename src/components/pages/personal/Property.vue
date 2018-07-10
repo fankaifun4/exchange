@@ -1,4 +1,4 @@
-<style scoped lang='scss'>
+<style  lang='scss' scoped>
 @import './css/index.scss';
 .table-container{
 	margin-top:30px;
@@ -182,6 +182,7 @@
 .date_fw{
 	height:35px;
 	padding:0 12px;
+  width:180px;
 	border-radius: 3px;
 }
 </style>

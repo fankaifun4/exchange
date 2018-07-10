@@ -15,7 +15,7 @@ import globalComponents from './globalComponents'
 // 引入vConsole
 // import VConsole from "vconsole/dist/vconsole.min.js"
 // var vConsole = new VConsole();
-
+//
 import './assets/css/font-icon/iconfont.scss'
 import './assets/js/libs/laydate/theme/default/laydate.scss'
 

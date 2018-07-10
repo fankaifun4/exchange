@@ -28,9 +28,9 @@ module.exports = {
     sourceMap: sourceMapEnabled,
     extract: isProduction
   }),
-  postcss: [
-    require('postcss-px2rem-dpr')(px2remConfig)
-  ],
+  // postcss: [
+    // require('postcss-px2rem-dpr')(px2remConfig)
+  // ],
   cssSourceMap: sourceMapEnabled,
   cacheBusting: config.dev.cacheBusting,
   transformToRequire: {
