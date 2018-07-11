@@ -1,0 +1,144 @@
+.entrance-box{
+  border-radius: 4px;
+  background-color: #272d38;
+  box-shadow: 0 3px 5px 0 rgba(0,0,0,.05), 0 7px 14px 0 rgba(18,18,26,.1);
+}
+.country-box{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.card-t p span {
+  color: #ff8838;
+}
+.chinad .el-form.w-600 {
+  width: 600px;
+}
+.el-form-item:after, .el-form-item__content:after {
+  clear: both;
+}
+form {
+  display: block;
+  margin-top: 0em;
+}
+.el-form-item {
+  margin-bottom: 24px;
+}
+.real-name-box .idcards .card-b .fill .el-form-item__label {
+  color: #9aa6b8;
+}
+.el-form-item__label {
+  text-align: right;
+  float: left;
+  font-size: 14px;
+  color: #666;
+  line-height: 40px;
+  padding: 0 12px 0 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.el-form-item__content {
+  line-height: 40px;
+  position: relative;
+  font-size: 14px;
+}
+.input__input_style.input_normal {
+  height: 36px;
+}
+.el-form-item__content:after, .el-form-item__content:before {
+  display: table;
+  content: "";
+}
+.el-form-item__content .el-input-group, .el-form-item__label {
+  vertical-align: middle;
+}
+.chinad .card-bt .idcard {
+  width: 100%;
+}
+
+.chinad .card-bt .idcard .ww {
+  width: 320px;
+  height: 160px;
+  border: 1px dashed #d9d9d9;
+  border-radius: 3px;
+  padding: 4px;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  background-size: 680px!important;
+  background: url(../../../../assets/img/cd-bg.png) no-repeat;
+}
+.chinad .card-bt .idcard .ww .error-position {
+  display: none;
+}
+.chinad .card-bt .idcard .ww .el-upload {
+  width: 310px;
+  height: 150px;
+}
+.el-upload {
+  display: inline-block;
+  text-align: center;
+  cursor: pointer;
+  outline: 0;
+}
+.el-upload__input {
+  display: none;
+}
+.chinad .card-bt .idcard .ww.czheng {
+  background-position: -8px -6px;
+}
+.chinad .card-bt .idcard .ww.cfan {
+  background-position: -8px -189px;
+}
+.chinad .card-bt .idcard .conditions {
+  line-height: 1.5;
+}
+.chinad .card-bt .idcard .conditions span .dian {
+  color: #70b32e;
+}
+.chinad .card-bt .idcard .ww.cshou {
+  background-position: -8px -371px;
+}
+.chinad .el-form .instance {
+  width: 140px;
+  height: 100px;
+  border: 1px solid hsla(0,0%,100%,.1);
+  border-radius: 3px;
+  position: relative;
+}
+.chinad .el-form .instance .meng {
+  cursor: pointer;
+  z-index: 20;
+  background: rgba(0,0,0,.3);
+  text-align: center;
+  line-height: 92px;
+  color: #fff;
+}
+.chinad .el-form .instance .meng, .chinad .el-form .instance img {
+  position: absolute;
+  top: 50%;
+  margin-top: -46px;
+  left: 50%;
+  margin-left: -66px;
+  width: 132px;
+  height: 92px;
+}
+.chinad .card-bt .idcard .el-form .el-form-item.commitborder {
+  border-top: 1px dashed hsla(0,0%,100%,.1);
+}
+.el-form-item:last-of-type {
+  padding-bottom: 24px;
+  margin: 0;
+}
+.country-select{
+  width:100%;
+  outline: none;
+  border: 1px solid transparent;
+  box-sizing: border-box;
+  width: 100%;
+  border-radius: 3px;
+  background-color: #363c47;
+  color: #fff;
+  padding-left: 15px;
+  padding-right: 35px;
+  height:35px;
+}

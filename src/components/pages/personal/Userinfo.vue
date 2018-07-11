@@ -9,15 +9,15 @@
 				<div class="child-nav-main pd-t24">
 					<div class="child-nav_title color-primary"><span>用户中心</span></div>
 					<div class="child-nav_nav">
-						<span  class="child-nav_item" @click="goUserCenter(0)" :class="{' router-link-exact-active':tableChecked===0}" >
+						<span  class="child-nav_item" @click="goRouterPath('UserCenter')" :class="{' router-link-exact-active':tableChecked==='UserCenter'}" >
 							<span>账户信息</span>
 							<span  class="after ts-12"></span>
 						</span>
-						<span  class="child-nav_item"  @click="goIdAuth(1)" :class="{' router-link-exact-active':tableChecked===1}">
+						<span  class="child-nav_item"  @click="goRouterPath('IdAuth')" :class="{' router-link-exact-active':tableChecked==='IdAuth'}">
 							<span >身份认证</span>
 							<span  class="after ts-12"></span>
 						</span>
-						<span  class="child-nav_item"  @click="selectTable(2)" :class="{' router-link-exact-active':tableChecked===2}">
+						<span  class="child-nav_item"  @click="goRouterPath('MyInvite')" :class="{' router-link-exact-active':tableChecked==='MyInvite'}">
 							<span>我的邀请</span>
 							<span  class="after ts-12"></span>
 						</span>
@@ -36,7 +36,7 @@
 export default {
   data() {
     return {
-      tableChecked: 0,
+      tableChecked: 'UserCenter',
       tplInfo:{}
     }
   },
@@ -47,14 +47,20 @@ export default {
 
   },
   methods:{
-    goUserCenter(val){
-      this.$router.push({name:'UserCenter'})
-      this.tableChecked=val
-    },
-    goIdAuth(val){
-      this.$router.push({name:'IdAuth'})
+    goRouterPath(val){
+      this.$router.push({name:val})
       this.tableChecked=val
     }
+  },
+  watch:{
+    $route(to,form){
+      if( to.path.indexOf('idAuth')>-1 ){
+        this.tableChecked='IdAuth'
+      }else{
+        this.tableChecked=to.name
+      }
+    }
   }
+
 };
 </script>

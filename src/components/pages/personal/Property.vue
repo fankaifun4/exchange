@@ -174,15 +174,17 @@
 	}
 }
 .select-bz{
-	height:35px;
+	height:28px;
 	padding:0 12px;
 	min-width:130px;
 	border-radius: 3px;
+  background: #363c47;
+  color: #fff;
 }
 .date_fw{
-	height:35px;
+	height:28px;
 	padding:0 12px;
-  width:180px;
+  width:200px;
 	border-radius: 3px;
 }
 </style>
@@ -320,7 +322,6 @@
 										<div v-else class="no-data">暂无数据</div>
 									</div>
 								</div>
-
 							</div>
 						</div>
 						<div class="table-2"  v-if="tableChecked===1">
@@ -536,7 +537,7 @@
 								<div class="flex-box">
 									<div  class="ts-14 mg-r24 ">
 										<span class="mg-r8 color--grey">币种</span>
-										<select name="" id="" class="select-bz">
+										<select name=""  class="select-bz">
 											<option value="">全部</option>
 											<option value="BTC">ETC</option>
 											<option value="BTC">ETH</option>
@@ -558,7 +559,7 @@
 									</div>
 									<div class="ts-14">
 										<span class="mg-r8 color--grey">时间范围</span>
-										<input type="text" class="date_fw" id="date_fw" readonly="readonly">
+										<input type="text" class="date_fw input__input_style  " id="date_fw" readonly="readonly">
 									</div>
 								</div>
 								<div class="box-ratio-group">

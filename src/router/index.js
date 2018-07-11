@@ -35,23 +35,43 @@ const router = new Router({
     {
       path: '/userInfo',
       name: 'UserInfo',
-      component: r => require.ensure([], () => r(require('../components/pages/personal/UserInfo.vue')), 'Property'),
+      redirect: { name: 'UserCenter' },
+      component: r => require.ensure([], () => r(require('../components/pages/personal/UserInfo.vue')), 'userInfo'),
       children:[
         {
           path: '',
-          redirect: 'userCenter'
+          redirect: { name: 'UserCenter' }
         },
         {
           path: 'userCenter',
           name: 'UserCenter',
-          component: r => require.ensure([], () => r(require('../components/pages/personal/components/UserMsg.vue')), 'Property'),
+          component: r => require.ensure([], () => r(require('../components/pages/personal/components/UserMsg.vue')), 'userInfo'),
         },
         {
           path: 'idAuth',
           name: 'IdAuth',
-          component: r => require.ensure([], () => r(require('../components/pages/personal/components/IdAuth.vue')), 'Property'),
-        }
+          component: r => require.ensure([], () => r(require('../components/pages/personal/components/IdAuth.vue')), 'userInfo'),
+          children:[
+            {
+              path: 'chinaAuth',
+              name: 'ChinaAuth',
+              component: r => require.ensure([], () => r(require('../components/pages/personal/components/ChinaAuth.vue')), 'userInfo')
+            },
+            {
+              path: 'guowaiAuth',
+              name: 'GuowaiAuth',
+              component: r => require.ensure([], () => r(require('../components/pages/personal/components/GuowaiAuth.vue')), 'userInfo')
+            }
+          ]
+        },
+
       ]
+    },
+    //我的委托
+    {
+      path: '/myInvite',
+      name: 'MyInvite',
+      component: r => require.ensure([], () => r(require('../components/pages/personal/components/MyInvite.vue')), 'Property'),
     },
     //委托管理
     {

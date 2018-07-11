@@ -112,6 +112,9 @@ element.style {
   padding-top: 32px;
   padding-bottom: 32px;
 }
+.pd-b32 {
+  padding-bottom: 32px!important;
+}
 .pd-l40 {
   padding-left: 40px!important;
 }
@@ -120,6 +123,10 @@ element.style {
 }
 .pd-r40 {
   padding-right: 40px!important;
+}
+.pd-tb32 {
+  padding-top: 32px!important;
+  padding-bottom: 32px!important;
 }
 .mg-t24 {
   margin-top: 24px!important;
@@ -136,6 +143,9 @@ element.style {
 }
 .mg-l24 {
     margin-left: 24px!important;
+}
+.mg-l40 {
+  margin-left: 40px!important;
 }
 .mg-b16{
   margin-bottom: 16px!important;
@@ -161,6 +171,10 @@ element.style {
 .mg-t64{
   margin-top: 64px;
 }
+.mg-t24 {
+  margin-top: 24px!important;
+}
+
 .mg-b48{
   margin-bottom: 48px;
 }

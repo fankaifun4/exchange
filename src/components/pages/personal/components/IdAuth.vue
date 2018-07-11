@@ -63,11 +63,14 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    &.active{
+      background:#00F7DE;
+      color:#9aa6b8;
+    }
     .box-gj-left{
       display: flex;
       justify-content: space-between;
       align-items: center;
-
       .china-qi,.shijie-qi{
         width:80px;
         height:55px;
@@ -86,9 +89,6 @@
       border:1px solid #27b7c2;
     }
   }
-  .guonei-rz{
-
-  }
 </style>
 <template>
       <div>
@@ -101,19 +101,19 @@
           <div  class="top">
             <div class="step-s">
               <div class="step-top-item">
-                <i class="iconfont icon-chose-yes step-icon mg-r8 active"></i>
-                <span class="active">每日限额 2 BTC</span>
-                <div class="line mg-l8 active"></div>
+                <i class="iconfont icon-chose-yes step-icon mg-r8" :class="{active:!isPassed}"></i>
+                <span class="" :claa="{active:!isPassed}">每日限额 2 BTC</span>
+                <div class="line mg-l8 " :class="{active:!isPassed}"></div>
               </div>
-              <div class="explain color-grey active">当前</div>
+              <div class="explain color-grey" :class="{active:!isPassed}">当前</div>
             </div>
             <div class="step-s">
               <div class="step-top-item">
-                <i class="iconfont icon-chose-yes step-icon mg-r8"></i>
-                <span>每日限额 20 BTC</span>
-                <div class="line mg-l8"></div>
+                <i class="iconfont icon-chose-yes step-icon mg-r8" :class="{active:isPassed}"></i>
+                <span :class="{active:isPassed}">每日限额 20 BTC</span>
+                <div class="line mg-l8" :class="{active:isPassed}"></div>
               </div>
-              <div class="explain color-grey">未实名认证</div>
+              <div class="explain color-grey" :class="{active:isPassed}">{{isPassed?'已实名认证':'未实名认证'}}</div>
             </div>
             <div class="step-s">
               <div class="step-top-item">
@@ -126,10 +126,11 @@
           </div>
         </div>
         <!--body-->
-        <div class="entrance-box mg-t16 pd-lr24 pd-tb32">
+
+        <div  class="entrance-box mg-t16 pd-lr24 pd-tb32">
           <p>选择认证地区</p>
           <div class="country-box mg-t64 mg-b48">
-            <div class="china-box box-size">
+            <div class="china-box box-size" @click="getAuthPass('ChinaAuth')" :class="{active:authPassType==='ChinaAuth'}">
               <div class="box-gj-left">
                 <div class="china-qi" >
                 </div>
@@ -137,22 +138,18 @@
               </div>
               <div class="color-theme">去认证</div>
             </div>
-            <div class="shijie-box box-size">
+            <div class="shijie-box box-size"  @click="getAuthPass('GuowaiAuth')" :class="{active:authPassType==='GuowaiAuth'}">
               <div class="box-gj-left">
                 <div class="shijie-qi" >
                 </div>
-                <div>中国大陆</div>
+                <div>其他国家</div>
               </div>
               <div class="color-theme">去认证</div>
             </div>
           </div>
         </div>
-        <!--国内APP认证-->
-        <div class="guonei-rz">
-          <div>
-            <p class="ts-16 color-theme">中国大陆地区身份认证</p>
-            <p class="color-grey">下载 CoinPark App 完成身份认证，获取更高提现额度</p>
-          </div>
+        <div>
+          <router-view></router-view>
         </div>
       </div>
 </template>
@@ -160,14 +157,18 @@
   export  default {
     data(){
       return{
-
+        authPassType:'',
+        isPassed:true
       }
     },
     mounted(){
 
     },
     methods:{
-
+      getAuthPass(type){
+        this.$router.push({name:type})
+        this.authPassType=type
+      }
     }
   }
 </script>
