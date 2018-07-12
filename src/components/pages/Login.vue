@@ -4,30 +4,43 @@
       Bibox 强强联手 Bibox Fund, FBG, 丹华资本，BlockWater Capital，八维资本，臻果基金 等全球顶级数字基金，战略投资 CoinPark。
 在CoinPark交易即挖矿，手续费100%返利，上线前两周持CP再享100%收益分红，后将调整为90%。
     </p>
-    <div class="box">
-      <p class="title">{{title}}</p>
+    <div class="box" v-if="pageData==0">
+      <p class="title">登录</p>
       <p class="inp">
         <input type="text" placeholder="请输入手机号码">
       </p>
-      <p v-if="pageData==1" class="inp">
+      <p class="inp">
+        <input type="password" placeholder="请输入密码">
+      </p>
+      <p class="btn" @click="login()">登录</p>
+      <div class="bot">
+        <p @click="forget()">忘记密码</p>
+        <p>
+          <span>还没有账号？</span>
+          <span @click="change()">修改密码</span>
+        </p>
+      </div>
+    </div>
+    <div class="box" v-else>
+      <p class="title">注册</p>
+      <p class="inp">
+        <input type="text" placeholder="请输入手机号码">
+      </p>
+      <p class="inp">
         <input type="password" placeholder="请设置密码">
       </p>
-      <p v-if="pageData==1" class="inp">
+      <p class="inp">
         <input type="password" placeholder="请确认密码">
       </p>
-      <div v-if="pageData==1" class="code">
+      <div class="code">
         <input type="password" placeholder="请输入验证码">
         <p>获取验证码</p>
       </div>
-      <p v-if="pageData==0" class="inp">
-        <input type="password" placeholder="请输入密码">
-      </p>
-      <p class="btn" @click="done()">{{btnTxt}}</p>
+      <p class="btn" @click="register()">注册</p>
       <div class="bot">
-        <p v-show="pageData==0" @click="forget()">忘记密码</p>
+        <p></p>
         <p>
-          <span>{{pageData==0 ? "还没有账号？" : "已有账号？"}}</span>
-          <span @click="change()">{{changeTxt}}</span>
+          <span style="color: #27b7c2;" @click="change()">登录</span>
         </p>
       </div>
     </div>
@@ -39,7 +52,7 @@
   import axios from 'axios';
   import qs from 'qs';
   import Props from "../common/Props";
-
+  import {login} from '@/service/login'
   export default {
     name: "login",
     data () {
@@ -61,28 +74,9 @@
         text: "数字资产是创新型的投资产品，价格波动较大，请您理性判断自己的投资能力，审慎做出投资决策，祝您交易愉快！"
       };
       this.pageData = this.$route.query.pageData;
-      switch(Number(this.pageData)){
-        case 0:
-          this.title = "登录";
-          this.btnTxt = "登录";
-          this.changeTxt = "注册";
-          console.log(this.title)
-          break;
-        case 1:
-          this.title = "注册";
-          this.btnTxt = "注册";
-          this.changeTxt = "登录";
-          break;
-        case 2:
-          this.title = "找回密码";
-          this.btnTxt = "确定";
-          this.changeTxt = "注册";
-          break;
-      }
-      // console.log(this.$route)
     },
     mounted () {
-   
+
     },
     methods: {
       recMsg(msg){
@@ -91,6 +85,7 @@
         }
       },
       done(){
+
         if(this.pageData==0){
           this.isProps = true;
           this.childPropsData = {
@@ -106,7 +101,7 @@
         this.pageData = 2;
       },
       change(){
-        this.pageData==0 ? this.pageData = 1 : this.pageData = 0;
+        this.pageData=this.pageData==0 ?  1 : 0;
       },
     },
     watch: {
@@ -115,28 +110,7 @@
         const toDepth = to.path.split("/").length;
         const fromDepth = from.path.split("/").length;
         this.pageData = to.query.pageData;
-        // console.log(to)
-      },
-      pageData: function(val, oldVal) {
-        switch(Number(val)){
-          case 0:
-            this.title = "登录";
-            this.btnTxt = "登录";
-            this.changeTxt = "注册";
-            console.log(this.title)
-            break;
-          case 1:
-            this.title = "注册";
-            this.btnTxt = "注册";
-            this.changeTxt = "登录";
-            break;
-          case 2:
-            this.title = "找回密码";
-            this.btnTxt = "确定";
-            this.changeTxt = "注册";
-            break;
-        }
-      },
+      }
     },
     components: {
       vProps:Props
@@ -149,10 +123,8 @@
 @media screen and (min-width: 900px) {
   .login{
     width: 100%;
-    position: fixed;
-    top:60px;
-    bottom: 0;
     background: #1d2129;
+    padding-bottom:100px;
   }
   .login .top{
     font-size: 16px;
@@ -255,9 +227,7 @@
 @media screen and (max-width: 900px) {
   .login{
     width: 100%;
-    position: fixed;
-    top:40px;
-    bottom: 0;
+    padding-bottom:100px;
     background: #1d2129;
   }
   .login .top{

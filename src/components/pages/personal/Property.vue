@@ -3,10 +3,13 @@
 .table-container{
 	margin-top:30px;
 	padding: 18px 0;
-    border-radius: 4px;
-    background-color: #272d38;
-    box-shadow: 0 3px 5px 0 rgba(0,0,0,.05), 0 7px 14px 0 rgba(18,18,26,.1);
-    color: #fff;
+  border-radius: 4px;
+  background-color: #272d38;
+  box-shadow: 0 3px 5px 0 rgba(0,0,0,.05), 0 7px 14px 0 rgba(18,18,26,.1);
+  color: #fff;
+  table{
+    width:100%;
+  }
 	.table-header{
 		tr{
 			th{
@@ -36,10 +39,10 @@
 				 	width:158px;
 				 }
 				 &:nth-child(6){
-				 	width:358px;
+				 	width:158px;
 				 }
 				 &:nth-child(7){
-				 	width:38px;
+				 	width:203px;
 				 }
 
 			}
@@ -224,11 +227,11 @@
 												<div  class="iconfont icon-tubiao-copy color-grey"></div>
 											</span>
 											<span  class="box-input_suffix pd-r8" style="z-index: 1;"></span> <!---->
-											<input  type="text" class="input__input_style  input_small ">
+											<input  type="text" class="input__input_style  input_small " v-model="AssetConfig.currencyType" @keypress.enter="searchCurrencyType">
 										</div>
 									</div>
-									<label for="" class="box-checkbox-main ts-14 color-grey mg-l16">
-										<span class="checked-box iconfont icon-yduidanxuankuangxuanzhong"></span>
+									<label  class="box-checkbox-main ts-14 color-grey mg-l16" @click="hideSmallType">
+										<span class="checked-box iconfont " :class="AssetConfig.HideSmallType?'icon-yduidanxuankuangxuanzhong':'icon-yduidanxuankuang '"></span>
 										<span class="ft-14 color-grey">隐藏小额资产</span>
 									</label>
 								</div>
@@ -248,7 +251,7 @@
 							<div class="">
 								<div class="zicanmingxi">
 									<div class="table-container">
-										<table v-if="false" border="0" cellspacing="0" cellpadding="0">
+										<table v-if="AssetDetail.length>0" border="0" cellspacing="0" cellpadding="0">
 											<thead class="table-header zcmx">
 												<tr>
 													<th class="text-left">币种</th>
@@ -261,62 +264,20 @@
 												</tr>
 											</thead>
 											<tbody class="table-body">
-												<tr>
-													<td class="text-left">BTC</td>
-													<td class="text-left">Bitcoin</td>
-													<td class="text-right">0.00000000</td>
-													<td class="text-right">0.00000000</td>
-													<td class="text-right">0.00000000</td>
-													<td class="text-right">0.00000000</td>
-													<td class="text-center">
-														<div>
-															<button  class="box-button mg-r8"><!----> 充值</button>
-															<button  disabled="disabled" class="box-button"><!----> 提现</button>
-														</div>
-													</td>
-												</tr>
-												<tr>
-													<td class="text-left">ETC</td>
-													<td class="text-left">Bitcoin</td>
-													<td class="text-right">0.00000000</td>
-													<td class="text-right">0.00000000</td>
-													<td class="text-right">0.00000000</td>
-													<td class="text-right">0.00000000</td>
-													<td class="text-center">
-														<div>
-															<button  class="box-button mg-r8"><!----> 充值</button>
-															<button  disabled="disabled" class="box-button"><!----> 提现</button>
-														</div>
-													</td>
-												</tr>
-												<tr>
-													<td class="text-left">ETH</td>
-													<td class="text-left">Bitcoin</td>
-													<td class="text-right">0.00000000</td>
-													<td class="text-right">0.00000000</td>
-													<td class="text-right">0.00000000</td>
-													<td class="text-right">0.00000000</td>
-													<td class="text-center">
-														<div>
-															<button  class="box-button mg-r8"><!----> 充值</button>
-															<button  disabled="disabled" class="box-button"><!----> 提现</button>
-														</div>
-													</td>
-												</tr>
-												<tr>
-													<td class="text-left">BTC</td>
-													<td class="text-left">Bitcoin</td>
-													<td class="text-right">0.00000000</td>
-													<td class="text-right">0.00000000</td>
-													<td class="text-right">0.00000000</td>
-													<td class="text-right">0.00000000</td>
-													<td class="text-center">
-														<div>
-															<button  class="box-button mg-r8"><!----> 充值</button>
-															<button  disabled="disabled" class="box-button"><!----> 提现</button>
-														</div>
-													</td>
-												</tr>
+                        <tr v-for="(item,key) in AssetDetail" v-if="showSmall(item)" >
+                          <td class="text-left">{{item.name}}</td>
+                          <td class="text-left">{{item.fullName}}</td>
+                          <td class="text-right">{{lookData?item.total:'***'}}</td>
+                          <td class="text-right">{{lookData?item.frozen:'***'}}</td>
+                          <td class="text-right">{{lookData?item.available:'***'}}</td>
+                          <td class="text-right">{{lookData?item.valuation:'***'}}</td>
+                          <td class="text-center">
+                            <div>
+                              <button :disabled="item.charge"  class="box-button mg-r8"><!----> 充值</button>
+                              <button :disabled="item.putForward" class="box-button"><!----> 提现</button>
+                            </div>
+                          </td>
+                        </tr>
 											</tbody>
 										</table>
 										<div v-else class="no-data">暂无数据</div>
@@ -641,12 +602,34 @@
 </template>
 <script>
 const layui =require('../../../assets/js/libs/laydate/laydate.js')
+import {debounce,throttle } from "../../../assets/js/dt_time"
 import { mapState, mapGetters,mapActions,mapMutations } from "vuex";
+import {getSearch} from '../../../service/property'
 	//账户资产
 	export default{
 		data(){
 			return {
-				tableChecked:0
+				tableChecked:0,
+        AssetConfig:{
+          currencyType:'',
+          debounce:null,
+          HideSmallType:false
+        },
+        AssetDetail:[{
+				  name:"BTC",
+          fullName:"Bitcoin",
+          total:0.0001,
+          frozen:1000,
+          available:1000,
+          valuation:1000,
+          action:{
+				    charge:true,
+            putForward:true
+          }
+        }],
+        RechargeRecord:[],
+        PresentRecord:[],
+        MyBill:[],
 			}
 		},
     computed:{
@@ -689,10 +672,40 @@ import { mapState, mapGetters,mapActions,mapMutations } from "vuex";
             this.dateInit()
           })
         }
-			}
+			},
+      /**
+       * 资产管理
+       * 2018-7-12 16:18:45
+       **/
+      //搜索资产明细
+      searchCurrencyType(){
+        this.AssetConfig.debounce()
+      },
+      //隐藏小额币种控制键
+      hideSmallType(){
+        this.AssetConfig.HideSmallType=!this.AssetConfig.HideSmallType
+      },
+      //是否显示小额币种
+      showSmall(model){
+          if( this.AssetConfig.HideSmallType ){
+            if(model.total>0.001)
+              return true
+            else
+              return false
+          }
+          return true
+      }
 		},
+    created(){
+      //搜索资产明细防抖
+      this.AssetConfig.debounce=throttle(()=>{
+        getSearch(this.AssetConfig.currencyType,'asdasd').then(res=>{
+          console.log(res)
+        })
+      },2000)
+    },
 		mounted(){
-      console.log(this.lookData)
+
 		},
     watch:{
 		  login(){
