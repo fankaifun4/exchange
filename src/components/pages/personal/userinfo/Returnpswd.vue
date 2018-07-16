@@ -15,7 +15,7 @@
                   <div class="box-input-box">
                     <span class="box-input_prefix pd-l8"></span>
                     <span  class="box-input_suffix pd-r8" style="z-index: 1;"></span>
-                    <input  type="password" placeholder="请输入原密码" class="box-input_input input__input_style js_input input_big box-input_input-Light" style="padding-left: 8px; padding-right: 8px;">
+                    <input   type="password" placeholder="请输入原密码" class="box-input_input input__input_style js_input input_big box-input_input-Light" style="padding-left: 8px; padding-right: 8px;">
                   </div>
                   <div  class="box-input_err text-left ts-12"></div>
                 </div>

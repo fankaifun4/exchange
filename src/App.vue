@@ -31,6 +31,7 @@ export default {
       if(!results) { return 0; }
       return results[1] || 0;
     }
+
     if(sessionStorage.isLogin=="true"){
       this.$store.dispatch("updateIsLogin",true);
     }else{

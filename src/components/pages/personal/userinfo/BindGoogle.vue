@@ -115,18 +115,17 @@
               <p  class="ts-16 color-primary marginNo mg-b16">2. 扫描二维码</p>
               <div class="sm-2wm">
                 <div class="l2wm-wp">
-                  <img src="../../../../assets/img/2wm.png" alt="">
+                  <img :src="googleView.img" alt="">
                 </div>
               </div>
               <div  class="key clearfix mg-t16">
                 <p  class="ts-12 color-grey pull-left marginNo">密钥：</p>
                 <div   readonly="readonly"
                      class="width-260 pull-left mg-l16 ts-12 pset-text"
-                     data-clipboard-text="MR3VQVRWNJVTO3TDKFYFQWKHKZ4UG23B" data-tooltips="点击复制">
+                     :data-clipboard-text="googleView.code" data-tooltips="点击复制">
                   <div  class="box-input-box">
-                    <input type="text" class=" input__input_style  input_normal " readonly="readonly" style="padding-left: 8px; padding-right: 8px;">
+                    <input type="text"  :value="googleView.code" class=" input__input_style  input_normal " readonly="readonly" style="padding-left: 8px; padding-right: 8px;">
                   </div>
-                  <div  class="box-input_err text-left ts-12"></div>
                 </div>
               </div>
             </div>
@@ -139,8 +138,9 @@
                     <div class="box-input-box">
                       <span  class="box-input_prefix pd-l8"></span>
                       <span  class="box-input_suffix pd-r8" style="z-index: 1;"></span>
-                      <input type="password" placeholder="请输入登录密码 " class="box-input_input input__input_style js_input input_big box-input_input-Light" style="padding-left: 8px; padding-right: 8px;">
+                      <input type="password" v-model="pass"  placeholder="请输入登录密码 " class="box-input_input input__input_style js_input input_big box-input_input-Light" style="padding-left: 8px; padding-right: 8px;">
                     </div>
+                    <div class="box-input_err text-left ts-12">{{passError}}</div>
                   </div>
                 </div>
                 <div class="sc-vice-box" style="width: 130px;"><!----> <p class="sc-vice router-link mg-l16 ts-12 color-theme">忘记密码</p></div>
@@ -152,9 +152,9 @@
                     <div class="box-input-box">
                       <span  class="box-input_prefix pd-l8"></span>
                       <span  class="box-input_suffix pd-r8" style="z-index: 1;"></span>
-                      <input type="text" placeholder="请谷歌验证码 " class="box-input_input input__input_style js_input input_big box-input_input-Light" style="padding-left: 8px; padding-right: 8px;">
+                      <input type="text" v-model="code" placeholder="请谷歌验证码 " class="box-input_input input__input_style js_input input_big box-input_input-Light" style="padding-left: 8px; padding-right: 8px;">
                     </div>
-                    <div class="box-input_err text-left ts-12"></div>
+                    <div class="box-input_err text-left ts-12">{{codeError}}</div>
                   </div>
                 </div>
                 <div class="sc-vice-box" style="width: 130px;"><!----> <p class="sc-vice router-link mg-l16 ts-12 color-theme"></p></div>
@@ -164,7 +164,7 @@
                 <div class="sc-input" style="width: 260px;">
                   <div class="box-input">
                     <div class="box-input-box">
-                      <button disabled class="box-button box-btn-s_big box-btn-t_primary" style="width: 260px;"><!----> 确认</button>
+                      <button @click="googleBindData" class="box-button box-btn-s_big box-btn-t_primary" style="width: 260px;"><!----> 确认</button>
                     </div>
                   </div>
                 </div>
@@ -179,14 +179,54 @@
 </template>
 <script>
   import reback from '../components/Return'
+  import {gooleVerif,googleBind} from '@/service/userInfo/userCenter'
+  import {isKong} from "../../../../factory";
+
   export default {
     data(){
       return{
-
+        googleView:{
+          code:'',
+          img:''
+        },
+        pass:'',
+        code:'',
+        passError:'',
+        codeError:''
       }
     },
     components:{
       reback
+    },
+    created(){
+      this.getGooleVerif()
+    },
+    methods:{
+      async getGooleVerif(){
+        let googleView= await  gooleVerif()
+        if( googleView.error ){
+
+        }else{
+          this.googleView=googleView.data
+        }
+      },
+      async googleBindData(){
+        if(isKong(this.pass) ){
+          this.passError='密码不能为空'
+          return
+        }
+        if(isKong(this.code)){
+          this.codeError='验证码不能为空'
+          return
+        }
+        let bind= await googleBind(this.code,this.googleView.code,this.pass)
+        console.log(bind)
+        if(bind.error){
+          alert('绑定失败')
+        }else{
+          alert('绑定成功')
+        }
+      },
     }
   }
 </script>

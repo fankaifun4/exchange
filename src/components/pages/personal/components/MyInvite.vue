@@ -98,11 +98,11 @@
             <div class="logins-top pd-b32">
               <div class="lt-left flex-box pd-b32 space-around">
                 <div class="numbers">
-                  <p class="ts-32" style="color: rgb(230, 232, 242);">0 <span class="ts-14">人</span></p>
+                  <p class="ts-32" style="color: rgb(230, 232, 242);"> {{ iviteInfo.zong }} <span class="ts-14">人</span></p>
                   <p class="ts-14 grey-color">已邀请的人数</p>
                 </div>
                 <div class="numbers pd-l40 number-border">
-                  <p class="ts-32" style="color: rgb(230, 232, 242);">0 <span class="ts-14">人</span></p>
+                  <p class="ts-32" style="color: rgb(230, 232, 242);"> {{ iviteInfo.auth }}<span class="ts-14">人</span></p>
                   <p class="ts-14 grey-color">有效人数（完成实名人数）</p>
                 </div>
                 <div class="numbers pd-l40 number-border">
@@ -113,7 +113,7 @@
               <div class="lt-right flex-box space-between pd-tb32">
                 <div class="invite-id flex-box ts-14 grey-color">
                   <p class="id-name">您的专属ID：</p>
-                  <p>811374571</p>
+                  <p>{{iviteInfo.usercode}}</p>
                 </div>
                 <div class="invite-id flex-box ts-14 grey-color">
                   <p class="id-name">专属邀请链接：</p>
@@ -177,4 +177,31 @@
     </div>
   </div>
 </template>
-<script></script>
+<script>
+  import {Invitation} from '../../../../service/userInfo/userCenter'
+
+  export default {
+    data(){
+      return{
+        iviteInfo:{
+          "zong": 0,   //总邀请人数
+          "auth": 0,   //认证人数
+          "usercode": ''    //推荐码
+        }
+      }
+    },
+    mounted(){
+      this.getIviteNumb()
+    },
+    methods:{
+      async getIviteNumb(){
+        let Numb= await  Invitation()
+        if(Numb.error){
+
+        }else{
+          this.iviteInfo=Numb
+        }
+      }
+    }
+  }
+</script>

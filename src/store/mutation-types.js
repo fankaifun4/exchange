@@ -1,3 +1,5 @@
 
 export const UPDATEISLOGIN = 'UPDATEISLOGIN'
 export const LOOKOUTDATA = 'LOOKOUTDATA'
+export const SETTOKEN = 'SETTOKEN'
+export const CLEARTOKEN='CLEARTOKEN'

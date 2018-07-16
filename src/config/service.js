@@ -1,10 +1,15 @@
 import config from './http.config'
 import axios from 'axios'
+import store from '../store/index'
 
 axios.defaults.baseURL=config.baseUrl
 
 axios.interceptors.request.use(function (config) {
-  config.headers['token']='adasdkljadkljadksljaskldjasd'
+  let token=store.state.token||sessionStorage.token
+
+  if(token){
+    config.headers['token']=token
+  }
   // 在发送请求之前做些什么
   return config;
 }, function (error) {
@@ -12,29 +17,77 @@ axios.interceptors.request.use(function (config) {
   return Promise.reject(error);
 });
 
+// 添加响应拦截器
+axios.interceptors.response.use(function (response) {
+  if(response.status!==200) {
+    return {
+      msg:response.statusText,
+      error:response.status
+    }
+  }
+  // 对响应数据做点什么
+  let data= response.data
+  let code =data.code||203
+  let msg= data.msg||''
+  if( code===200 ){
+    return data
+  }
+  if( code===203 ){
+     return requestError(Promise,msg)
+  }
+  if( code===204 ){
+    return timeoutRequest(Promise,msg)
+  }
+  return response;
+}, function (error) {
+  // 对响应错误做点什么
+  return Promise.reject(error);
+});
+
+function requestError(promise,msg){
+  return Promise.reject({
+    error:msg
+  })
+}
+
+function timeoutRequest(promise,msg){
+  store.dispatch('updateIsLogin',false)
+  store.dispatch('clearToken')
+  return Promise.reject({
+    error:msg
+  })
+}
+
 const HTTPREQUEST={
   timeout:100000,
 }
 
 function get(url,params){
-  return axios.get(url,{
-    params:{
+  return axios({
+    url,
+    ...HTTPREQUEST,
+    method: 'GET',
+    params: {
       ...params
     }
-  }).then((res)=>{
+  }).then(res=>{
+
     return res
+  }).catch(error=>{
+    return error
   })
 }
 
 function post(url,params){
-  return axios.request({
+  return axios({
     url,
+    ...HTTPREQUEST,
     method:'POST',
-    ...HTTPREQUEST
-  },{
-    ...params
+    data:{...params}
   }).then((res)=>{
     return res
+  }).catch(error=>{
+    return error
   })
 }
 

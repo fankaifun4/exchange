@@ -6,5 +6,11 @@ export default {
   },
   [types.LOOKOUTDATA](state,arg){
     state.lookData=arg
+  },
+  [types.SETTOKEN](state,arg){
+    state.token=arg
+  },
+  [types.CLEARTOKEN](state){
+    state.token=''
   }
 }

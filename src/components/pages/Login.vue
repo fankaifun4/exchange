@@ -7,34 +7,34 @@
     <div class="box" v-if="pageData==0">
       <p class="title">登录</p>
       <p class="inp">
-        <input type="text" placeholder="请输入手机号码">
+        <input type="text" placeholder="请输入手机号码" v-model="userInfo.users">
       </p>
       <p class="inp">
-        <input type="password" placeholder="请输入密码">
+        <input type="password" placeholder="请输入密码"  v-model="userInfo.pass">
       </p>
-      <p class="btn" @click="login()">登录</p>
+      <p class="btn" @click="login">登录</p>
       <div class="bot">
         <p @click="forget()">忘记密码</p>
         <p>
           <span>还没有账号？</span>
-          <span @click="change()">修改密码</span>
+          <span @click="change()">注册</span>
         </p>
       </div>
     </div>
     <div class="box" v-else>
       <p class="title">注册</p>
       <p class="inp">
-        <input type="text" placeholder="请输入手机号码">
+        <input type="text" placeholder="请输入手机号码"  v-model="regInfo.mobile">
       </p>
       <p class="inp">
-        <input type="password" placeholder="请设置密码">
+        <input type="password" maxlength="20" placeholder="请设置密码"  v-model="regInfo.pass">
       </p>
       <p class="inp">
-        <input type="password" placeholder="请确认密码">
+        <input type="password"  maxlength="20"  placeholder="请确认密码"  v-model="regInfo.quepass">
       </p>
       <div class="code">
-        <input type="password" placeholder="请输入验证码">
-        <p>获取验证码</p>
+        <input type="text" placeholder="请输入验证码"  v-model="regInfo.verify">
+        <p @click="getVerify">获取验证码({{timeoutSeconds}})</p>
       </div>
       <p class="btn" @click="register()">注册</p>
       <div class="bot">
@@ -53,10 +53,27 @@
   import qs from 'qs';
   import Props from "../common/Props";
   import {login} from '@/service/login'
+  import { regUser , sendsm } from "@/service/reg";
+
   export default {
     name: "login",
     data () {
       return {
+        userInfo:{
+          users:"",
+          pass:""
+        },
+        timeoutSeconds:60,
+        regInfo:{
+          mobile:'',
+          email:'',
+          code:'',
+          pass:'',
+          quepass:'',
+          nickname:'',
+          verify:''
+        },
+        hasSendSMS:false,
         isProps: false,
         childPropsData:{type:0,title:"",text:"",name:""},
         pageData: 0,
@@ -85,7 +102,6 @@
         }
       },
       done(){
-
         if(this.pageData==0){
           this.isProps = true;
           this.childPropsData = {
@@ -103,6 +119,104 @@
       change(){
         this.pageData=this.pageData==0 ?  1 : 0;
       },
+      async login(){
+        let isN=/(^\s*)|(\s*$)/g
+        if(this.userInfo.users.replace(isN,'').length==0 || this.userInfo.pass==''){
+          return
+        }
+        this.loginApp('adkas+klasjdlkj1239==1232uadjasdlkjasdasdasd121312fewr14')
+        return
+        let logins = await login(this.userInfo.users,this.userInfo.pass)
+        if(logins){
+         if(logins.error){
+           alert(logins.error)
+         }else{
+           this.loginApp(logins.token)
+         }
+        }
+      },
+      loginApp(token){
+        this.$router.push({name:'index'})
+        this.$store.dispatch('setToken',token)
+        this.$store.dispatch("updateIsLogin",true)
+        sessionStorage.token=this.$store.state.token
+        sessionStorage.isLogin=true
+      },
+      async getVerify(){
+        if(this.hasSendSMS) return
+        this.hasSendSMS=true
+        let mobile=this.regInfo.mobile
+        if(this.isKong(mobile)){
+          this.hasSendSMS=false
+          alert('手机号码不能为空')
+          return
+        }
+        let time = setInterval(()=>{
+          if(this.timeoutSeconds>0){
+            this.timeoutSeconds-=1
+          }else{
+            this.hasSendSMS=false
+            clearInterval(time)
+          }
+        },1000)
+        let verify = await sendsm(mobile)
+        if(verify.error){
+          alert( verify.error )
+        }else{
+          console.log( verify )
+        }
+      },
+      async register(){
+        let mobile=this.regInfo.mobile
+        let pass = this.regInfo.pass
+        let quepass= this.regInfo.quepass
+        let verify= this.regInfo.verify
+        let email = this.regInfo.email
+        let code = this.regInfo.code
+        let nickname= this.regInfo.nickname
+        if( this.isKong(mobile) ){
+          alert('请输入电话号码')
+          return
+        }
+        if( this.isKong(pass) ){
+          alert('请输入您的登录密码')
+          return
+        }
+        if(this.isKong(quepass)){
+          alert('请再次确认您的登录密码')
+          return
+        }
+        if(this.isKong(verify)){
+          alert('验证码不能为空')
+          return
+        }
+        if(  pass != quepass ){
+          alert('登录密码，和确认密码不同')
+          return
+        }
+        if( pass.length<8 || pass.length>20 ){
+          alert('密码长度至少8位到20位字符')
+          return
+        }
+        let reg = await regUser(mobile,email,pass,quepass,nickname,verify)
+        if(reg.error){
+          alert(reg.error)
+          return
+        }else{
+          let logins = await login(mobile,pass)
+          if(logins.error){
+            alert(logins.error)
+            return
+          }else{
+            this.loginApp(logins.token)
+          }
+        }
+      },
+
+      isKong(val){
+        let isN=/(^\s*)|(\s*$)/g
+        return val.replace(isN,'').length==0? true: false
+      }
     },
     watch: {
       $route(to, from) {
@@ -136,7 +250,7 @@
     margin: 30px auto;
   }
   .login .box{
-    width: 320px;
+    width: 350px;
     padding: 30px;
     background: #fff;
     border-radius: 5px;
@@ -148,7 +262,7 @@
     line-height: 30px;
   }
   .login .inp input{
-    width: 320px;
+    width:100%;
     background: #fff;
     font-size: 16px;
     text-indent: 10px;
@@ -175,7 +289,7 @@
     float: left;
   }
   .login .code p{
-    width: 100px;
+    padding:0 15px;
     background: #52c5ce;
     font-size: 16px;
     color: #fff;
@@ -194,7 +308,7 @@
     font-size: 16px;
     line-height: 30px;
     text-align: center;
-    width: 322px;
+    width: 100%;
     border-radius: 5px;
     color: #fff;
     background: #52c5ce;
@@ -240,7 +354,7 @@
     margin: 30px auto;
   }
   .login .box{
-    width: 320px;
+    width: 350px;
     padding: 30px;
     background: #fff;
     border-radius: 5px;
@@ -252,7 +366,7 @@
     line-height: 30px;
   }
   .login .inp input{
-    width: 320px;
+    width: 100%;
     background: #fff;
     font-size: 16px;
     text-indent: 10px;
@@ -279,7 +393,7 @@
     float: left;
   }
   .login .code p{
-    width: 100px;
+    padding:0 15px;
     background: #52c5ce;
     font-size: 16px;
     color: #fff;
@@ -298,7 +412,7 @@
     font-size: 16px;
     line-height: 30px;
     text-align: center;
-    width: 322px;
+    width: 100%;
     border-radius: 5px;
     color: #fff;
     background: #52c5ce;
