@@ -1,10 +1,13 @@
 <style lang="scss" scoped>
   @import "../css/index.scss";
+  .container{
+    padding:0;
+  }
   .invite-banner{
     width:100%;
-    background: url("../../../../assets/img/banner.jpg") no-repeat center top;
+    background:#191c2e  url("/static/img/banner.jpg") no-repeat center top;
     height: 350px;
-    background-size: 100%;
+    background-size: auto 100%; 
   }
   .invite-box .invites {
     background-color: #191c2e;
@@ -40,9 +43,17 @@
   .input__input_style.input_normal {
     height: 36px;
   }
-  .invite-box .invites .invite-main .invite-content .logins .logins-top .lt-right .invite-id .invite-input {
-    width: 400px;
+  @media screen and (max-width:900px){
+    .invite-box .invites .invite-main .invite-content .logins .logins-top .lt-right .invite-id .invite-input {
+      width: 200px;
+    }
   }
+  @media screen and (min-width:900px){
+    .invite-box .invites .invite-main .invite-content .logins .logins-top .lt-right .invite-id .invite-input {
+      width: 400px;
+    }
+  }
+ 
   .input__input_style {
     outline: none;
     border: 1px solid transparent;
@@ -106,7 +117,7 @@
                   <p class="ts-14 grey-color">有效人数（完成实名人数）</p>
                 </div>
                 <div class="numbers pd-l40 number-border">
-                  <p class="ts-32" style="color: rgb(230, 232, 242);">0.00000000 <span class="ts-14">BTC</span></p>
+                  <p class="ts-32" style="color: rgb(230, 232, 242);">0.0000 <span class="ts-14">BTC</span></p>
                   <p class="ts-14 grey-color">已获返利佣金额预估</p>
                 </div>
               </div>

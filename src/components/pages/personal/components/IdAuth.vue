@@ -1,8 +1,21 @@
 <style lang="scss" scoped>
+@media screen and (min-width: 900px) {
   .top-step{
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: center;
+    align-content: center
+  }
+
+}
+@media screen and (max-width: 900px) {
+  .top-step{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center
+  }
+}
+  .top-step{
     .top{
       display: flex;
       justify-content: center;
@@ -31,7 +44,7 @@
           }
           .line {
             background: #fff;
-            width: 120px;
+            width: 90px;
             height: 2px;
             &.active{
               background: #3d5d26;
@@ -77,11 +90,11 @@
         margin-right: 20px;
       }
       .china-qi{
-        background: url("../../../../assets/img/china.jpg");
+        background: url("/static/img/china.jpg");
         background-size:100% 100% ;
       }
       .shijie-qi{
-        background: url("../../../../assets/img/lhg.png");
+        background: url("/static/img/lhg.png");
         background-size:100% 100% ;
       }
     }
@@ -102,7 +115,7 @@
             <div class="step-s">
               <div class="step-top-item">
                 <i class="iconfont icon-chose-yes step-icon mg-r8" :class="{active:!isPassed}"></i>
-                <span class="" :claa="{active:!isPassed}">每日限额 2 BTC</span>
+                <span class="" :class="{active:!isPassed}">每日限额 2 BTC</span>
                 <div class="line mg-l8 " :class="{active:!isPassed}"></div>
               </div>
               <div class="explain color-grey" :class="{active:!isPassed}">当前</div>

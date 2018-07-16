@@ -2,7 +2,7 @@
   <div class="notice">
     <div class="i-head">
       <div class="content">
-        <img src="../../../static/img/logo1.jpg" alt="">
+        <img src="../../../static/img/logo.png" alt="">
         <div class="right">
           <span>提交请求</span>
           <span @click="toLogin()">登录</span>
@@ -95,7 +95,7 @@
 <style scoped>
 @media screen and (min-width: 900px) {
   .notice{
-    color: #333;
+    color: #fff;
   }
   .notice .i-head{
     width: 1920px;
@@ -140,7 +140,8 @@
     text-decoration: underline;
   }
   .notice .title-box{
-    width: 900px;
+    width: 1200px;
+    padding:0 30px;
     margin: 0 auto;
   }
   .notice .title-box p:nth-child(1){
@@ -156,6 +157,7 @@
   .notice .title-box li{
     font-size: 16px;
     line-height: 50px;
+    padding:30px 0;
     border-bottom: 1px solid #ddd;
     cursor: pointer;
   }
@@ -201,7 +203,7 @@
 }
 @media screen and (max-width: 900px) {
   .notice{
-    color: #333;
+    color: #fff;
   }
   .notice .i-head{
     width: 750px;
@@ -235,7 +237,7 @@
     font-size: 18px;
     font-weight: 400;
     line-height: 70px;
-    width: 700px;
+     padding:0 30px;
     margin: 0 auto 10px;
   }
   .notice h2 .active{
@@ -246,7 +248,7 @@
     text-decoration: underline;
   }
   .notice .title-box{
-    width: 600px;
+    padding:0 30px;
     margin: 0 auto;
   }
   .notice .title-box p:nth-child(1){
@@ -263,6 +265,7 @@
     font-size: 16px;
     line-height: 50px;
     border-bottom: 1px solid #ddd;
+     padding:30px 0;
     cursor: pointer;
   }
   .notice .title-box li:hover{

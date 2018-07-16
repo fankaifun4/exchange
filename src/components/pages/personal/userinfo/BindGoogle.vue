@@ -1,12 +1,31 @@
-<style lang="scss" >
+<style lang="scss" scoped>
   @import "../css/index.scss";
+  @media screen and(max-width: 900px) {
+    .googlebox{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      >div{
+        margin-bottom:40px;
+        width:80%;
+      }
+      .download{
+        padding-left:40px;
+        .down-list{
+          padding-left:40px;
+        }
+      }
+    }
+  }
+  @media screen and(min-width: 900px) {
+    .googlebox{
+      display: flex;
+      justify-content: center;
+      align-items:flex-start;
+    }
+  }
   .googlebox{
-    .border-r{
-      border-left: 1px solid #e6eaf0;
-    }
-    .border-l {
-      border-right: 1px solid #e6eaf0;
-    }
     .down-list{
       >div{
         width:160px;
@@ -94,7 +113,7 @@
         <div class="return">
           <reback><span>开启谷歌验证</span></reback>
           <div class="googlebox clearfix">
-            <div class="download pull-left pd-r40">
+            <div class="download  pd-r40 ">
                 <div  class="ts-16 color-primary marginNo mg-b16 delails"><span class="ts-16">1. 下载并安装</span></div>
                 <div class="down-list">
                   <div class="mg-t8">
@@ -111,7 +130,7 @@
                   </div>
                 </div>
               </div>
-            <div class="scanning pull-left pd-l40 pd-r40 border-l border-r">
+            <div class="scanning  pd-l40 pd-r40 ">
               <p  class="ts-16 color-primary marginNo mg-b16">2. 扫描二维码</p>
               <div class="sm-2wm">
                 <div class="l2wm-wp">
@@ -119,9 +138,9 @@
                 </div>
               </div>
               <div  class="key clearfix mg-t16">
-                <p  class="ts-12 color-grey pull-left marginNo">密钥：</p>
+                <p  class="ts-12 color-grey  marginNo">密钥：</p>
                 <div   readonly="readonly"
-                     class="width-260 pull-left mg-l16 ts-12 pset-text"
+                     class="width-260  mg-l16 ts-12 pset-text"
                      :data-clipboard-text="googleView.code" data-tooltips="点击复制">
                   <div  class="box-input-box">
                     <input type="text"  :value="googleView.code" class=" input__input_style  input_normal " readonly="readonly" style="padding-left: 8px; padding-right: 8px;">
@@ -129,7 +148,7 @@
                 </div>
               </div>
             </div>
-            <div class="seting pull-left pd-l40">
+            <div class="seting  pd-l40">
               <p  class="ts-16 color-primary marginNo mg-b16">3. 完成设置</p>
               <div class="safe-common mg-t24">
                 <div class="sc-title mg-r16 ts-14 color-grey" style="width: 140px;">登录密码：</div>

@@ -210,7 +210,7 @@
 }
 .posinal-list{
   position: absolute;
-  top:45px;
+  top:40px;
   z-index: 100;
   left:-290px;
   width:300px;

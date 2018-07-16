@@ -124,7 +124,7 @@
 @media screen and (min-width: 900px) {
   .index .banner{
     height: 486px;
-    background: url(../../../static/img/index-bg.png) no-repeat;
+    background: url(/static/img/index-bg.png) no-repeat;
     background-size: 100% 100%;
   }
   .index .banner .title{
@@ -319,7 +319,7 @@
 @media screen and (max-width: 900px) {
   .index .banner{
     height: 300px;
-    background: url(../../../static/img/index-bg.png) no-repeat;
+    background: url(/static/img/index-bg.png) no-repeat;
     background-size: 100% 100%;
   }
   .index .banner .title{
@@ -335,13 +335,11 @@
     text-align: center;
   }
   .index .banner .content{
-    width: 750px;
     margin-top: 20px;
     display: flex;
     justify-content: center;
   }
   .index .banner .content .left p:nth-child(1){
-    width: 300px;
     height: 60px;
     line-height: 60px;
     font-size: 20px;
@@ -352,7 +350,6 @@
     box-shadow: 0 30px 25px -41px rgba(0,0,0,.5);
   }
   .index .banner .content .left p:nth-child(2){
-    width: 300px;
     height: 30px;
     line-height: 30px;
     color: #7e849c;
@@ -391,21 +388,19 @@
     background-color: rgba(0,152,163,.06);
   }
   .index .ranking{
-    width: 750px;
     background-color: #22283C;
-    padding-bottom: 58px;
+    padding:0 30px 58px 30px;
   }
   .index .ranking .title{
     padding-top: 60px;
-    width: 700px;
     margin: 0 auto;
     color: #e6e8f2;
     font-weight: 500;
     font-size: 32px;
   }
   .index .ranking .content{
-    width: 700px;
-    padding-top: 40px;
+    padding: 40px 30px 0 30px;
+
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
@@ -415,8 +410,8 @@
     color: #e6e8f2;
     border-radius: 4px;
     background-color: #43458a;
-    padding:4px;
-    width: 120px;
+    padding:10px;
+    width: 45%;
     margin-bottom: 30px;
   }
   .index .ranking .content li:nth-child(1){
@@ -511,7 +506,7 @@
   }
   .index .how .content img,.index .profits .content img{
     width: 300px;
-    height: 350px;
+    height: 300px;
   }
 }
 </style>

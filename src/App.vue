@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <v-head v-if="isHead"></v-head>
-    <div  class="wrapper">
+    <div  class="wrapper container">
       <transition :name="transitionName">
         <router-view ></router-view>
       </transition>
@@ -63,7 +63,6 @@ html,body{
   width: 100%;
   height: 100%;
   user-select: none;
-  background: #181f2e;
   overflow-x:hidden;
 }
 #app {
@@ -75,9 +74,9 @@ html,body{
   font-size: 14px;
 }
 .wrapper{
+  width:100%;
   position:relative;
   min-height:calc( 100% - 200px );
-  overflow:hidden;
 }
 * {
   margin: 0;

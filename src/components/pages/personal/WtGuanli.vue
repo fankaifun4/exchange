@@ -25,6 +25,8 @@
       tr{
         td{
           padding: 10px 0 10px 8px;
+          word-wrap: break-word;
+          word-break:break-all;
           &:first-child{
             padding-left:28px;
           }
@@ -267,7 +269,7 @@
                         <td class="text-left">0.00000000</td>
                         <td class="text-left">2</td>
                         <td class="text-left">2018-7-7 20:56:22</td>
-                        <td class="text-left">asdasdasdasdasdasdasdasdasdas</td>
+                        <td class="text-left">2123</td>
                         <td class="text-center">
                           <div class="color-primary">进行中</div>
                         </td>
@@ -372,7 +374,7 @@
                         <td class="text-left">0.00000000</td>
                         <td class="text-left">2</td>
                         <td class="text-left">2018-7-7 20:56:22</td>
-                        <td class="text-left">asdasdasdasdasdasdasdasdasdas</td>
+                        <td class="text-left">123123</td>
                         <td class="text-center">
                           <div class="color-primary">进行中</div>
                         </td>
