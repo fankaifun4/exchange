@@ -6,7 +6,7 @@
     <div class="card-t pd-b16"><p class="color-primary ts-16">其他国家身份认证</p> <p class="ts-12 color-grey mg-t8"><span>*</span>请确保使用的是真实身份，平台会加密存储您的身份信息并自动审核，即便是平台工作人员也无法查看，请放心填写。</p></div>
     <div class="card-b pd-t24 pd-b24">
       <div class="chinad guowai">
-        <form action="" class="el-form w-600 el-form--label-right">
+        <div  class="el-form w-600 el-form--label-right">
           <div class="el-form-item">
             <label for="first_name" class="el-form-item__label" style="width: 240px;">姓氏：</label>
             <div class="el-form-item__content" style="margin-left: 240px;">
@@ -61,10 +61,10 @@
               </div>
             </div>
           </div>
-        </form>
+        </div>
         <div class="card-bt">
           <div class="idcard">
-            <form action="" class="el-form clearfix mg-t24 el-form--label-right">
+            <div  class="el-form clearfix mg-t24 el-form--label-right">
               <div class="el-form-item">
                 <label for="" class="el-form-item__label" style="width: 240px;">本人护照封面照片：</label>
                 <div class="el-form-item__content" style="margin-left: 240px;">
@@ -78,7 +78,9 @@
                       </div>
                     </div>
                   </div>
-                  <div class="pull-left instance mg-l40"><!----> <img src="../../../../assets/img/huz.jpg" alt=""> <div class="meng ts-16">查看示例</div></div>
+                  <div class="pull-left instance mg-l40"><!----> <img src="/static/img/huz.jpg" alt="">
+                    <div class="meng ts-16" @click="lookout('/static/img/huz.jpg')">查看示例</div>
+                  </div>
                 </div>
               </div>
               <div class="el-form-item clearfix mg-t24">
@@ -92,7 +94,9 @@
                       </div>
                     </div>
                   </div>
-                  <div class="pull-left instance mg-l40"><!----> <img src="../../../../assets/img/huzli.jpg" alt=""> <div class="meng ts-16">查看示例</div></div>
+                  <div class="pull-left instance mg-l40"><!----> <img src="/static/img/huzli.jpg" alt="">
+                    <div class="meng ts-16" @click="lookout('/static/img/huzli.jpg')">查看示例</div>
+                  </div>
                 </div>
 
               </div>
@@ -109,24 +113,50 @@
                       </div>
                     </div>
                   </div>
-                  <div class="pull-left instance mg-l40"><!----> <img src="../../../../assets/img/huzsl.jpg" alt=""> <div class="meng ts-16">查看示例</div></div>
+                  <div class="pull-left instance mg-l40"><!----> <img src="/static/img/huzsl.jpg" alt="">
+                    <div class="meng ts-16" @click="lookout('/static/img/huzsl.jpg')">查看示例</div>
+                  </div>
                 </div>
-
               </div>
               <div class="el-form-item pd-t24 commitborder">
                 <div class="el-form-item__content" style="margin-left: 240px;">
                   <div class="errC text-red"></div>
-                  <button  class="box-button box-btn-s_normal box-btn-t_primary"><!----> 提交</button>
+                  <button  class="box-button box-btn-s_normal box-btn-t_primary" @click="submitGwAuth"><!----> 提交</button>
                   <!---->
                 </div>
               </div>
-            </form>
+            </div>
           </div>
         </div>
       </div>
     </div>
+    <lookout :open="openShap" @closeShap="closeShap">
+      <img :src="lookSrc" alt="">
+    </lookout>
   </div>
 </template>
 <script>
+import Lookout from "../../../../globalComponents/lookOut";
 
+export default {
+  components: {Lookout},
+  data(){
+      return {
+        openShap:false,
+        lookSrc:''
+      }
+  },
+  methods:{
+    lookout(src){
+      this.openShap=true
+      this.lookSrc=src
+    },
+    closeShap(){
+      this.openShap=false
+    },
+    submitGwAuth(){
+
+    }
+  }
+}
 </script>

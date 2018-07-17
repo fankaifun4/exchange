@@ -229,7 +229,7 @@
 					<div class="table-wrap">
 						<div class="table-1"  v-if="tableChecked===0">
 							<div class="flex-box space-between pd-t16">
-								<div class="flex-box" style="min-width: 350px;">
+								<div class="flex-box">
 									<div  class="ts-14" style="width: 180px;">
 										<div  class="box-input-box">
 											<span  class="box-input_prefix pd-l8">
@@ -412,36 +412,36 @@
 						</div>
 						<div class="table-3"  v-if="tableChecked===2">
 							<div class="flex-box space-between pd-t16">
-								<div class="flex-box" style="min-width: 350px;">
+								<div class="flex-box" >
 									<div  class="ts-14" style="width: 180px;">
 										<div  class="box-input-box">
 											<span  class="box-input_prefix pd-l8">
 												<div  class="iconfont icon-tubiao-copy color-grey"></div>
 											</span>
 											<span  class="box-input_suffix pd-r8" style="z-index: 1;"></span> <!---->
-											<input  type="text" class="input__input_style  input_small" v-model="PresentConfig.type" @keypress.enter="searchPresentType">
+											<input  type="text" class="input__input_style  input_small" v-model="PresentConfig.searchText" @keypress.enter="searchPresentType">
 										</div>
 
 									</div>
 								</div>
 								<div class="box-ratio-group">
 									<label class="box-ratio-main">
-										<span class="checked-box iconfont icon-yduidanxuankuangxuanzhong"></span>
+										<span class="checked-box iconfont " :class="PresentConfig.type==1?'icon-yduidanxuankuangxuanzhong':'icon-yduidanxuankuang'" ></span>
 										<input type="radio" name="check-txjl"  style="display:none" @click="PresentWatchTYpe('1')" >
 										<span class="mg-l4">全部</span>
 									</label>
 									<label class="box-ratio-main">
-										<span class="checked-box iconfont icon-yduidanxuankuang"></span>
+										<span class="checked-box iconfont " :class="PresentConfig.type==2?'icon-yduidanxuankuangxuanzhong':'icon-yduidanxuankuang'"></span>
 										<input type="radio"  name="check-txjl" style="display:none" @click="PresentWatchTYpe('2')" >
 										<span class="mg-l4">成功</span>
 									</label>
 									<label class="box-ratio-main">
-										<span class="checked-box iconfont icon-yduidanxuankuang"></span>
+										<span class="checked-box iconfont " :class="PresentConfig.type==3?'icon-yduidanxuankuangxuanzhong':'icon-yduidanxuankuang'"></span>
 										<input type="radio"  name="check-txjl" style="display:none" @click="PresentWatchTYpe('3')" >
 										<span class="mg-l4">进行中</span>
 									</label>
 									<label class="box-ratio-main">
-										<span class="checked-box iconfont icon-yduidanxuankuang"></span>
+										<span class="checked-box iconfont " :class="PresentConfig.type==4?'icon-yduidanxuankuangxuanzhong':'icon-yduidanxuankuang'"></span>
 										<input type="radio"  name="check-txjl"  style="display:none" @click="PresentWatchTYpe('4')" >
 										<span class="mg-l4">失败</span>
 									</label>

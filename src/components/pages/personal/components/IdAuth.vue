@@ -64,8 +64,18 @@
     justify-content: space-around;
     align-items: center;
   }
+
+@media screen and(max-width: 900px) {
+  .box-size{
+    width: 300px;
+  }
+}
+@media screen and(min-width: 900px) {
   .box-size{
     width: 440px;
+  }
+}
+  .box-size{
     height: 112px;
     padding: 32px;
     border-radius: 4px;
